@@ -30,3 +30,10 @@ select * from employee_payroll where start_date between CAST('2018-01-01' as dat
 alter table employee_payroll add gender char(1);
 update employee_payroll  set gender ='M' where name = 'Billi' or name = 'Charlie';
 update employee_payroll  set gender ='F' where name = 'Terisa';
+
+--UC-6
+select SUM(salary) from employee_payroll group by gender;
+select AVG(salary) from employee_payroll group by gender;
+select MIN(salary) from employee_payroll group by gender;
+select MAX(salary) from employee_payroll group by gender;
+select COUNT(salary) from employee_payroll group by gender;
