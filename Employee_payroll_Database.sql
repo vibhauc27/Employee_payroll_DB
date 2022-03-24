@@ -17,5 +17,13 @@ start_date date not null
 insert into employee_payroll values
 (101,'Billi',100000.00,'2018-01-03'),
 (102,'Terisa',200000.00,'2019-11-13'),
-(103,'Charlie',300000.00,'2020-05-21')
+(103,'Charlie',300000.00,'2020-05-21');
+
+--UC-4
+select * from employee_payroll;
+
+--UC-5
+select salary from employee_payroll where name='Billi';
+select * from employee_payroll where start_date between CAST('2018-01-01' as date) AND CAST('2020-01-01' as date);
+
 
