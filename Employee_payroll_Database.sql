@@ -38,16 +38,35 @@ select MIN(salary) from employee_payroll group by gender;
 select MAX(salary) from employee_payroll group by gender;
 select COUNT(salary) from employee_payroll group by gender;
 
---UC8 Start
+--UC8 
 --Ability to extend employee_payroll data to store employee information like employee phone, address and department
 
-alter table employee_payroll add phonenumber varchar(50),address varchar(200) not null default 'Maharashtra',department varchar(50);
+alter table employee_payroll add phonenumber varchar(50),address varchar(200) not null default 'Karnataka',department varchar(50);
 
 update employee_payroll set phonenumber='8556985643', department='Sales' where name='John';
 update employee_payroll set phonenumber='7056923643', department='Marketing' where name='Rachel';
 update employee_payroll set phonenumber='7756985643', department='Sales' where name='Terissa';
 update employee_payroll set phonenumber='8956985643', department='HR' where name='Bill';
 update employee_payroll set phonenumber='8156985643', department='Marketing' where name='Charlie';
+
+select * from employee_payroll;
+
+--UC9 
+--Ability to extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
+
+alter table employee_payroll add BasicPay decimal, Deductions decimal, TaxablePay decimal, IncomeTax decimal, NetPay decimal;
+ 
+ update employee_payroll set BasicPay=salary;
+
+ alter table employee_payroll drop column salary;
+
+ update employee_payroll set Deductions=2000 where name='John' or name='Charlie';
+ update employee_payroll set Deductions=1500 where name='Rachel' or name='Terissa' or name='Bill';
+ 
+ update employee_payroll set IncomeTax=250;
+ update employee_payroll set TaxablePay=500;
+
+ update employee_payroll set NetPay = (BasicPay-Deductions);
 
 select * from employee_payroll;
 
