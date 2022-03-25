@@ -43,11 +43,11 @@ select COUNT(salary) from employee_payroll group by gender;
 
 alter table employee_payroll add phonenumber varchar(50),address varchar(200) not null default 'Karnataka',department varchar(50);
 
-update employee_payroll set phonenumber='8556985643', department='Sales' where name='John';
 update employee_payroll set phonenumber='7056923643', department='Marketing' where name='Rachel';
 update employee_payroll set phonenumber='7756985643', department='Sales' where name='Terissa';
 update employee_payroll set phonenumber='8956985643', department='HR' where name='Bill';
 update employee_payroll set phonenumber='8156985643', department='Marketing' where name='Charlie';
+update employee_payroll set phonenumber='8556985643', department='Sales' where name='John';
 
 select * from employee_payroll;
 
@@ -69,4 +69,13 @@ alter table employee_payroll add BasicPay decimal, Deductions decimal, TaxablePa
  update employee_payroll set NetPay = (BasicPay-Deductions);
 
 select * from employee_payroll;
+
+--UC10 
+--Ability to make Terissa as part of Sales and Marketing Department
+
+insert into employee_payroll(id,name,start_date,gender,phonenumber,department,BasicPay,Deductions,TaxablePay,IncomeTax,NetPay)
+values('1','Terissa','2021-08-02','F','8687653523','Marketing',50000,2000,500,250,47250);
+
+select * from employee_payroll where name='Terissa';
+
 
