@@ -31,9 +31,23 @@ alter table employee_payroll add gender char(1);
 update employee_payroll  set gender ='M' where name = 'Billi' or name = 'Charlie';
 update employee_payroll  set gender ='F' where name = 'Terisa';
 
---UC-6
+--UC-7
 select SUM(salary) from employee_payroll group by gender;
 select AVG(salary) from employee_payroll group by gender;
 select MIN(salary) from employee_payroll group by gender;
 select MAX(salary) from employee_payroll group by gender;
 select COUNT(salary) from employee_payroll group by gender;
+
+--UC8 Start
+--Ability to extend employee_payroll data to store employee information like employee phone, address and department
+
+alter table employee_payroll add phonenumber varchar(50),address varchar(200) not null default 'Maharashtra',department varchar(50);
+
+update employee_payroll set phonenumber='8556985643', department='Sales' where name='John';
+update employee_payroll set phonenumber='7056923643', department='Marketing' where name='Rachel';
+update employee_payroll set phonenumber='7756985643', department='Sales' where name='Terissa';
+update employee_payroll set phonenumber='8956985643', department='HR' where name='Bill';
+update employee_payroll set phonenumber='8156985643', department='Marketing' where name='Charlie';
+
+select * from employee_payroll;
+
